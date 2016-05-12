@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DiscountApp</string>
+    <string name="message">Choose a store to check discounts</string>
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="elkady.discountapp.MainActivity"
+    android:background="#51af5c">
+
+    <!--
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gridView"
+
+        android:numColumns="auto_fit"
+        android:columnWidth="90dp"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center" />-->
+<TableRow
+    android:layout_width="wrap_content"
+    android:layout_height="200dp"
+    android:layout_marginBottom="100dp">
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:text="King Soopers"
+        android:id="@+id/ks_button"
+        android:layout_marginRight="100dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_column="0" />
+
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="match_parent"
+        android:text="Albertsons"
+        android:id="@+id/albertsons_button"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_column="1" />
+</TableRow>
+<TableRow
+    android:layout_width="wrap_content"
+    android:layout_height="200dp"
+  >
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sprouts"
+        android:id="@+id/sprouts_button"
+        android:layout_marginRight="100dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_column="0" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Safe Way"
+        android:id="@+id/sw_button"
+        android:layout_gravity="top"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_column="0" />
+
+</TableRow>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+
+        android:text="Choose a store to see its Discounts"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:textColor="#212833" />
+</TableLayout>
