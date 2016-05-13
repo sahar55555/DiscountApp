@@ -3,6 +3,10 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
+# changed during import attempt, and suspect to cause conflicts
+/.idea/vcs.xml
+/.idea/misc.xml
+/.idea/gradle.xml
 .DS_Store
 /build
 /captures
