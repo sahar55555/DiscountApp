@@ -17,11 +17,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         String store_id = "not initialized";
-        switch(v.getId()) {
+        switch(v.getId())
+        {
             case R.id.albertsons_button:
                 store_id = "albertsons";
+                break;
+            case R.id.ks_button:
+                    store_id="KingSoopers";
                 break;
         }
         Toast.makeText(this, store_id, Toast.LENGTH_LONG).show();
