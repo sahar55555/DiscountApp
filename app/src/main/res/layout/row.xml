@@ -5,6 +5,7 @@
     android:orientation="horizontal">
 
     <!-- I deleted the vertical orientation that we can have two items on one line -->
+    <!-- hi Sahar! -->
 
     <LinearLayout
 
