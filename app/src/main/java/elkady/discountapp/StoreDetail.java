@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by elkady on 5/15/16.
@@ -36,7 +37,19 @@ public class StoreDetail extends Activity implements View.OnClickListener
     }
 
     @Override
-    public void onClick(View v) {
-
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.ks_button:
+                Toast.makeText(this, " I clicked KingSoopers button", Toast.LENGTH_SHORT).show();
+            case R.id.albertsons_button:
+                Toast.makeText(this," I clicked Albertsons button",Toast.LENGTH_SHORT).show();
+            case R.id.sw_button:
+                Toast.makeText(this," I clicked SafeWay button",Toast.LENGTH_SHORT).show();
+            case R.id.sprouts_button:
+                Toast.makeText(this," I clicked Albertsons button",Toast.LENGTH_SHORT).show();
+        }
     }
+
 }
