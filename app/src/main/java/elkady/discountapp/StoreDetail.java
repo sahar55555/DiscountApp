@@ -33,7 +33,7 @@ public class StoreDetail extends Activity implements View.OnClickListener
         produce_button=(Button)findViewById(R.id.Produce);
         bakery_button=(Button)findViewById(R.id.Bakery);
         bath_button=(Button)findViewById(R.id.Bath);
-        foodNbeverages_button=(Button)findViewById(R.id.Food_N_beverages);
+        foodNbeverages_button=(Button)findViewById(R.id.Food_N_Beverages);
     }
 
     @Override
