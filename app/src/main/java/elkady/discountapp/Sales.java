@@ -8,7 +8,13 @@ import java.util.Date;
 public class Sales
 {
     private String ProductName;
-    public enum Stores {KingSoopers,Sprouts,SafeWay,Albertsons};
+    public enum Stores {
+        KING_SOOPERS(1), SPROUTS(2), SAFE_WAY(3), ALBERTSONS(4);
+        private final int index;
+        Stores(int i) {
+            this.index = i;
+        }
+    };
     public enum Categories{ Fruits, Veg,Breakfast, Bakery,Dairy};
     private Stores Shop;
     private Categories Category;

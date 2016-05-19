@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">DiscountApp</string>
     <string name="message">Choose a store to check discounts</string>
+    <string name="bakery_label">Bakery</string>
+    <string name="dairy_label">Dairy</string>
+    <string name="meat_label">Meat</string>
+    <string name="produce_label">Produce</string>
+    <string name="bath_label">Bath</string>
+    <string name="food_beverage_label">Food and Beverages</string>
 </resources>

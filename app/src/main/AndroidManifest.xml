@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".HttpExampleActivity"/>
+        <activity android:name=".StoreDetail"/>
+
     </application>
 
 </manifest>

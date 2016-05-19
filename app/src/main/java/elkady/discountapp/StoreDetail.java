@@ -31,7 +31,7 @@ public class StoreDetail extends Activity implements View.OnClickListener
     Button bakery_button=null;
     Button bath_button=null;
     Button foodNbeverages_button=null;
-    String store_id = "not initialized";
+    Sales.Stores store_id; // this could be equivalent to KING_SOOPERS
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -46,7 +46,26 @@ public class StoreDetail extends Activity implements View.OnClickListener
         bath_button=(Button)findViewById(Bath);
         foodNbeverages_button=(Button)findViewById(Food_N_Beverages);
 
-
+        //set our store_id variable to the param passed in through Intent.putExtra
+        store_id = (Sales.Stores)getIntent().getSerializableExtra(MainActivity.STORENAME_EXTRA);
+        switch(store_id)
+        {
+            case KING_SOOPERS:
+                stname.setText("King Sooper's");
+                break;
+            case ALBERTSONS:
+                stname.setText("Albertson's");
+                break;
+            case SAFE_WAY:
+                stname.setText("Safeway");
+                break;
+            case SPROUTS:
+                stname.setText("Sprout's");
+                break;
+            default:
+                stname.setText("Undefined store name");
+                break;
+        }
 
     }
 
@@ -56,7 +75,7 @@ public class StoreDetail extends Activity implements View.OnClickListener
         switch (v.getId())
         {
             default:
-                Toast.makeText(this, store_id, Toast.LENGTH_LONG).show();
+               // Toast.makeText(this, store_id, Toast.LENGTH_LONG).show();
                 break;
         }
     }

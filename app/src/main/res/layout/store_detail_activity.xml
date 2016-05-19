@@ -10,22 +10,29 @@
     </TableRow>
     <TableRow>
         <Button
+            android:text="@string/dairy_label"
             android:id="@+id/Dairy"/>
+
         <Button
+            android:text="@string/meat_label"
             android:id="@+id/Meat"/>
 
     </TableRow>
     <TableRow>
         <Button
+            android:text="@string/produce_label"
             android:id="@+id/Produce"/>
         <Button
+            android:text="@string/bakery_label"
             android:id="@+id/Bakery"/>
 
     </TableRow>
     <TableRow>
         <Button
+            android:text="@string/bath_label"
             android:id="@+id/Bath"/>
         <Button
+            android:text="@string/food_beverage_label"
             android:id="@+id/Food_N_Beverages"/>
 
     </TableRow>

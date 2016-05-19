@@ -4,16 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
 
-
+    public final static String STORENAME_EXTRA="elkady.discountapp.STORENAME";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,20 +34,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v)
     {
+        Intent intent=null;
 
         switch(v.getId())
         {
             case R.id.ks_button:
-                Toast.makeText(this, " I clicked KingSoopers button", Toast.LENGTH_SHORT).show();
+                intent=new Intent (this, StoreDetail.class);
+                intent.putExtra(STORENAME_EXTRA,Sales.Stores.KING_SOOPERS);
+                startActivity(intent);
+                //Toast.makeText(this, " I clicked KING_SOOPERS button", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.albertsons_button:
-                Toast.makeText(this," I clicked Albertsons button",Toast.LENGTH_SHORT).show();
+                intent=new Intent (this, StoreDetail.class);
+                intent.putExtra(STORENAME_EXTRA,Sales.Stores.ALBERTSONS);
+                startActivity(intent);
+               // Toast.makeText(this," I clicked ALBERTSONS button",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sw_button:
-                Toast.makeText(this," I clicked SafeWay button",Toast.LENGTH_SHORT).show();
+                intent=new Intent (this, StoreDetail.class);
+                intent.putExtra(STORENAME_EXTRA,Sales.Stores.SAFE_WAY);
+                startActivity(intent);
+             //   Toast.makeText(this," I clicked SAFE_WAY button",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sprouts_button:
-                Toast.makeText(this," I clicked Sprouts button",Toast.LENGTH_SHORT).show();
+                intent=new Intent (this, StoreDetail.class);
+                intent.putExtra(STORENAME_EXTRA,Sales.Stores.SPROUTS);
+                startActivity(intent);
+               // Toast.makeText(this," I clicked SPROUTS button",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.http_test:
                 startActivity(new Intent(this, HttpExampleActivity.class));
