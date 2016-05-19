@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.http_test).setOnClickListener(this);
     }
 
     @Override
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.ks_button:
                     store_id="KingSoopers";
+                break;
+            case R.id.http_test:
+                startActivity(new Intent(this, HttpExampleActivity.class));
                 break;
         }
         Toast.makeText(this, store_id, Toast.LENGTH_LONG).show();
