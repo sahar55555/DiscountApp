@@ -21,6 +21,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static elkady.discountapp.R.id.get_button;
+import static elkady.discountapp.R.id.output;
 import static elkady.discountapp.R.id.urltext;
 
 /**
@@ -37,8 +39,8 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_http);
         urlText = (EditText) findViewById(urltext);
-        textView = (TextView) findViewById(R.id.output);
-        getButton = (Button) findViewById(R.id.get_button);
+        textView = (TextView) findViewById(output);
+        getButton = (Button) findViewById(get_button);
         getButton.setOnClickListener(this);
     }
 
@@ -87,7 +89,7 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
             InputStream is = null;
             // Only display the first 500 characters of the retrieved
             // web page content.
-            int len = 500;
+            int len = 1024;
 
             try {
                 URL url = new URL(myurl);
