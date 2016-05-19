@@ -8,32 +8,46 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// these are the Views defined in the xml file
+import static elkady.discountapp.R.id.Bakery;
+import static elkady.discountapp.R.id.Bath;
+import static elkady.discountapp.R.id.Dairy;
+import static elkady.discountapp.R.id.Food_N_Beverages;
+import static elkady.discountapp.R.id.Produce;
+import static elkady.discountapp.R.id.storeName;
+
+
 /**
  * Created by elkady on 5/15/16.
  */
 public class StoreDetail extends Activity implements View.OnClickListener
 {
-   TextView stname=null;
+
+
+    TextView stname=null;
     Button dairy_button=null;
     Button meat_button=null;
     Button produce_button=null;
     Button bakery_button=null;
     Button bath_button=null;
     Button foodNbeverages_button=null;
+    String store_id = "not initialized";
 
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_detail_activity);
 
-
-        stname=(TextView)findViewById(R.id.storeName);
-        dairy_button=(Button)findViewById(R.id.Dairy);
+        stname=(TextView)findViewById(storeName);
+        dairy_button=(Button)findViewById(Dairy);
         meat_button=(Button)findViewById(R.id.Meat);
-        produce_button=(Button)findViewById(R.id.Produce);
-        bakery_button=(Button)findViewById(R.id.Bakery);
-        bath_button=(Button)findViewById(R.id.Bath);
-        foodNbeverages_button=(Button)findViewById(R.id.Food_N_Beverages);
+        produce_button=(Button)findViewById(Produce);
+        bakery_button=(Button)findViewById(Bakery);
+        bath_button=(Button)findViewById(Bath);
+        foodNbeverages_button=(Button)findViewById(Food_N_Beverages);
+
+
+
     }
 
     @Override
@@ -41,14 +55,9 @@ public class StoreDetail extends Activity implements View.OnClickListener
     {
         switch (v.getId())
         {
-            case R.id.ks_button:
-                Toast.makeText(this, " I clicked KingSoopers button", Toast.LENGTH_SHORT).show();
-            case R.id.albertsons_button:
-                Toast.makeText(this," I clicked Albertsons button",Toast.LENGTH_SHORT).show();
-            case R.id.sw_button:
-                Toast.makeText(this," I clicked SafeWay button",Toast.LENGTH_SHORT).show();
-            case R.id.sprouts_button:
-                Toast.makeText(this," I clicked Albertsons button",Toast.LENGTH_SHORT).show();
+            default:
+                Toast.makeText(this, store_id, Toast.LENGTH_LONG).show();
+                break;
         }
     }
 
