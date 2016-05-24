@@ -9,8 +9,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -23,7 +27,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import static elkady.discountapp.R.id.get_button;
-import static elkady.discountapp.R.id.output;
+//import static elkady.discountapp.R.id.output;
+import static elkady.discountapp.R.id.product_list;
 import static elkady.discountapp.R.id.urltext;
 
 /**
@@ -34,15 +39,24 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
     private EditText urlText;
     private TextView textView;
     private Button getButton;
+    private ListView productListView;
+
+    private ArrayList<Sales> SalesList;
+    private ArrayAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_http);
         urlText = (EditText) findViewById(urltext);
-        textView = (TextView) findViewById(output);
+        //textView = (TextView) findViewById(output);
+        productListView = (ListView)findViewById(product_list);
         getButton = (Button) findViewById(get_button);
         getButton.setOnClickListener(this);
+        SalesList = new ArrayList<>();
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,SalesList);
+
+
     }
 
     // When user clicks button, calls AsyncTask.
@@ -80,14 +94,17 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            textView.setText(result);
+            //textView.setText(result);
             // parsing string by new lines, discard header
             String[] lines = result.split("\n");
-            ArrayList<Sales> sales = new ArrayList<>();
+
             for (int i = 1; i < lines.length; i++) {
                 Sales sale = Sales.parseFromString(lines[i]);
-                sales.add(sale);
+                SalesList.add(sale);
             }
+
+            productListView.setAdapter(adapter);
+            getButton.setEnabled(false);
         }
 
         // Given a URL, establishes an HttpUrlConnection and retrieves
@@ -135,6 +152,8 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
             return new String(truncated);
         }
     }
+
+
 
 
 

@@ -16,11 +16,15 @@
         android:id="@+id/get_button"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textAppearance="@android:style/TextAppearance.Small"
         android:text="Output"
         android:id="@+id/output"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal" />-->
+    <ListView
+        android:id="@+id/product_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

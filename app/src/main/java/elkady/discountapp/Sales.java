@@ -111,8 +111,7 @@ public class Sales
     @Override
     public String toString()
     {
-        return " This week's Store is: \n ProductName: "+getProductName()+"\nShop: "+getShop()
-                +"\n";
+        return getShop() + ","+ getProductName() + "; " + String.format("$%.2f per unit.", getPrice());
     }
 
     public static Stores storeValueFromString(String sval)
