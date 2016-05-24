@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/urltext"
-        android:text="http://www.junglejeorge.com/product.txt" />
+        android:text="http://www.junglejeorge.com/SampleData/SampleDataFromAds.txt" />
 
     <Button
         android:layout_width="wrap_content"

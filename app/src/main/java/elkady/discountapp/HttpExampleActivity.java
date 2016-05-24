@@ -20,6 +20,7 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import static elkady.discountapp.R.id.get_button;
 import static elkady.discountapp.R.id.output;
@@ -80,6 +81,13 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
         @Override
         protected void onPostExecute(String result) {
             textView.setText(result);
+            // parsing string by new lines, discard header
+            String[] lines = result.split("\n");
+            ArrayList<Sales> sales = new ArrayList<>();
+            for (int i = 1; i < lines.length; i++) {
+                Sales sale = Sales.parseFromString(lines[i]);
+                sales.add(sale);
+            }
         }
 
         // Given a URL, establishes an HttpUrlConnection and retrieves
@@ -87,9 +95,7 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
 // a string.
         private String downloadUrl(String myurl) throws IOException {
             InputStream is = null;
-            // Only display the first 500 characters of the retrieved
-            // web page content.
-            int len = 1024;
+            int len = 4028;
 
             try {
                 URL url = new URL(myurl);
@@ -121,8 +127,12 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
             Reader reader = null;
             reader = new InputStreamReader(stream, "UTF-8");
             char[] buffer = new char[len];
-            reader.read(buffer);
-            return new String(buffer);
+            int numRead = reader.read(buffer);
+            char[] truncated = new char[numRead];
+            // the empty spots in the char[] cause parsing problems,
+            //  transfer data to an exactly sized array
+            for (int i = 0; i < numRead; i++) truncated[i] = buffer[i];
+            return new String(truncated);
         }
     }
 
