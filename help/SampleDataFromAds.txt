@@ -1,0 +1,19 @@
+Store Name	Product Name	Product Detail	Unit Price	Dept
+KS	Large Sweet California Cherries		2.99	Produce
+KS	Fresh Lean Ground Beef		3.99	Meat
+KS	Jumbo Cantaloupe		0.49	Produce
+KS	Country Style Pork Ribs		1.88	Meat
+KS	Colorado Proud Milk		1.99	Dairy
+KS	King Soopers/City Market Large Eggs		1.79	Dairy
+SW	Organic Hass Avocados	"Medium, USDA ORGANIC"	1.00	Produce
+SW	"Strawberries, Raspberries, Blueberries or Blackberrie"	"1-lb. Strawberries, 6-oz. Raspberries, Blueberries or Blackberries."	2.00	Produce
+SW	80% Lean Ground Beef	3-lbs. or more. Fresh Ground In-Store	2.99	Meat
+SW	Assorted Pork Loin Chop	Bone-in. Any size package.	1.99	Meat
+SW	Extra Large Wild Alaskan Bairdi Snow Crab	10 to 12-ct. Clusters	7.99	Meat
+SW	Tide Laundry Detergent	42 to 50-oz. or 16-ct. PODS. Selected varieties.	5.99	Home
+Ab	Organic Hass Avocados	"Medium, USDA ORGANIC"	1.00	Produce
+Ab	"Strawberries, Raspberries, Blueberries or Blackberrie"	"1-lb. Strawberries, 6-oz. Raspberries, Blueberries or Blackberries."	2.00	Produce
+Ab	80% Lean Ground Beef	3-lbs. or more. Fresh Ground In-Store	2.99	Meat
+Ab	Assorted Pork Loin Chop	Bone-in. Any size package.	1.99	Meat
+Ab	Extra Large Wild Alaskan Bairdi Snow Crab	10 to 12-ct. Clusters	7.99	Meat
+Ab	Tide Laundry Detergent	42 to 50-oz. or 16-ct. PODS. Selected varieties.	5.99	Home
