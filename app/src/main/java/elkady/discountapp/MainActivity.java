@@ -42,25 +42,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent=new Intent (this, StoreDetail.class);
                 intent.putExtra(STORENAME_EXTRA,Sales.Stores.KING_SOOPERS);
                 startActivity(intent);
-                //Toast.makeText(this, " I clicked KING_SOOPERS button", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.albertsons_button:
                 intent=new Intent (this, StoreDetail.class);
                 intent.putExtra(STORENAME_EXTRA,Sales.Stores.ALBERTSONS);
                 startActivity(intent);
-               // Toast.makeText(this," I clicked ALBERTSONS button",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sw_button:
                 intent=new Intent (this, StoreDetail.class);
                 intent.putExtra(STORENAME_EXTRA,Sales.Stores.SAFE_WAY);
                 startActivity(intent);
-             //   Toast.makeText(this," I clicked SAFE_WAY button",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sprouts_button:
                 intent=new Intent (this, StoreDetail.class);
                 intent.putExtra(STORENAME_EXTRA,Sales.Stores.SPROUTS);
                 startActivity(intent);
-               // Toast.makeText(this," I clicked SPROUTS button",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.http_test:
                 startActivity(new Intent(this, HttpExampleActivity.class));
