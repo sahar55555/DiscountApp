@@ -7,4 +7,5 @@
     <string name="produce_label">Produce</string>
     <string name="bath_label">Bath</string>
     <string name="food_beverage_label">Food and Beverages</string>
+    <string name="testbutton">Test Data Connection</string>
 </resources>

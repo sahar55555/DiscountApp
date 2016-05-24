@@ -65,7 +65,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Safe Way"
+        android:text="SafeWay"
         android:id="@+id/sw_button"
         android:layout_gravity="top"
         android:layout_marginLeft="10dp"
@@ -96,8 +96,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test Data Connection"
+            android:text="@string/testbutton"
             android:id="@+id/http_test"
-            android:layout_column="0" />
+            android:layout_column="1" />
     </TableRow>
 </TableLayout>
