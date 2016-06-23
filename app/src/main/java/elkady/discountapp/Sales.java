@@ -25,6 +25,7 @@ public class Sales
         PRODUCE
     }
 
+
     public static Category DepthFromString(String sVal) {
         if (sVal.compareToIgnoreCase("beverage") == 0) {
             return Category.BEVERAGE;

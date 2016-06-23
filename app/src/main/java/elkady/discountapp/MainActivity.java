@@ -29,6 +29,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View sprouts_button=findViewById(R.id.sprouts_button);
         sprouts_button.setOnClickListener(this);
 
+        checkForNewData();
+
+    }
+
+    public void checkForNewData() {
+
     }
 
     @Override

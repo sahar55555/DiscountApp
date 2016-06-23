@@ -49,14 +49,13 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_http);
         urlText = (EditText) findViewById(urltext);
-        //textView = (TextView) findViewById(output);
+
+        // set up activity_http
         productListView = (ListView)findViewById(product_list);
         getButton = (Button) findViewById(get_button);
         getButton.setOnClickListener(this);
         SalesList = new ArrayList<>();
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,SalesList);
-
-
     }
 
     // When user clicks button, calls AsyncTask.
