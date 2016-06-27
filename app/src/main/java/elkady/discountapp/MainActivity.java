@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -29,12 +31,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View sprouts_button=findViewById(R.id.sprouts_button);
         sprouts_button.setOnClickListener(this);
 
-        checkForNewData();
+        String s1 = "Mon, 27 Jun 2016 00:04:41"; // as supplied by www.prfol.org/phi/timestamp.php
+        String s2 = "Mon, 27 Jun 2016 00:06:34";
+        compareTimestamps(s1, s2);
 
     }
 
-    public void checkForNewData() {
+    public int compareTimestamps(String oldTimestamp,  String newTimeStamp) {
 
+        return 0;
     }
 
     @Override
