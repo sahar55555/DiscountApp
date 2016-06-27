@@ -37,7 +37,6 @@ public class ServerUtil {
     // connection vars
     private ConnectivityManager connMgr;
     private NetworkInfo networkInfo;
-    private ProcessGET callbackFxn;
 
 
     public ServerUtil(Activity parentActivity) {
@@ -46,9 +45,9 @@ public class ServerUtil {
     }
 
     public void getTimeStamp(ProcessGET callback) {
-        callbackFxn = callback;
+
         if (networkInfo != null && networkInfo.isConnected()) {
-            new DownloadWebpageTask().execute(TIMESTAMP_URL);
+            new DownloadWebpageTask(callback).execute(TIMESTAMP_URL);
         }
     }
 
@@ -58,6 +57,13 @@ public class ServerUtil {
     // an InputStream. Finally, the InputStream is converted into a string, which is
     // displayed in the UI by the AsyncTask's onPostExecute method.
     private class DownloadWebpageTask extends AsyncTask<String, Void, String> {
+        private ProcessGET callbackFxn;
+
+        DownloadWebpageTask(ProcessGET callback) {
+            super();
+            callbackFxn = callback;
+        }
+
         @Override
         protected String doInBackground(String... params) {
             String url = params[0];
