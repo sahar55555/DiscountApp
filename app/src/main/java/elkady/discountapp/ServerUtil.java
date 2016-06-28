@@ -26,7 +26,7 @@ public class ServerUtil {
 
     // settings
     // ... server location
-    private static final String SERVER_URL_BASE = "www.prfol.org/phi";
+    private static final String SERVER_URL_BASE = "http://www.prfol.org/phi";
     private static final String TIMESTAMP_URL = SERVER_URL_BASE + "/timestamp.php";
     // ... configuration
     private static final int READ_TIMEOUT = 10000; // milliseconds
