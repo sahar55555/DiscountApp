@@ -3,9 +3,18 @@ package elkady.discountapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
+import android.text.format.DateUtils;
+//import android.text.SimpleDateFormat;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.util.logging.Logger.*;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
@@ -38,6 +47,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public int compareTimestamps(String oldTimestamp,  String newTimeStamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        try {
+            Date frstdate = sdf.parse(oldTimestamp);
+            Date newdate = sdf.parse(newTimeStamp);
+            if (frstdate.compareTo(newdate) < 0) {
+                return 0;
+            } else
+                return -1;
+        } catch (ParseException ex) {
+            getLogger(Package.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
 
         return 0;
     }
