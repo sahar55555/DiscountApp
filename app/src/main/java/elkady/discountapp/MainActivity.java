@@ -51,10 +51,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             Date frstdate = sdf.parse(oldTimestamp);
             Date newdate = sdf.parse(newTimeStamp);
-            if (frstdate.compareTo(newdate) < 0) {
-                return 0;
-            } else
+            if (frstdate.compareTo(newdate) < 0)
+            {
                 return -1;
+            } else if(frstdate.compareTo(newdate)>0)
+                return 1;
+            else if(frstdate.compareTo(newdate)==0)
+                return 0;
+
         } catch (ParseException ex) {
             getLogger(Package.class.getName()).log(Level.SEVERE, null, ex);
         }
