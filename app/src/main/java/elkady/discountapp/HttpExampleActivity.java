@@ -12,9 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -41,7 +39,7 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
     private Button getButton;
     private ListView productListView;
 
-    private ArrayList<Sales> SalesList;
+    private ArrayList<Product> productArrayList;
     private ArrayAdapter adapter;
 
     @Override
@@ -54,8 +52,8 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
         productListView = (ListView)findViewById(product_list);
         getButton = (Button) findViewById(get_button);
         getButton.setOnClickListener(this);
-        SalesList = new ArrayList<>();
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,SalesList);
+        productArrayList = new ArrayList<>();
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,productArrayList);
     }
 
     // When user clicks button, calls AsyncTask.
@@ -98,8 +96,8 @@ public class HttpExampleActivity extends Activity implements View.OnClickListene
             String[] lines = result.split("\n");
 
             for (int i = 1; i < lines.length; i++) {
-                Sales sale = Sales.parseFromString(lines[i]);
-                SalesList.add(sale);
+                Product sale = Product.parseFromString(lines[i]);
+                productArrayList.add(sale);
             }
 
             productListView.setAdapter(adapter);

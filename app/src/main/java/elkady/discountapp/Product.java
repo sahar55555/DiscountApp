@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Created by elkady on 4/14/16.
  */
-public class Sales
+public class Product
 {
     private String ProductName;
     public enum Stores {
@@ -68,12 +68,12 @@ public class Sales
     private float Price;
     private String detail;
 
-    public Sales(String prName,float prc, Stores store, Category cat)
+    public Product(String prName, float prc, Stores store, Category cat)
     {
         this(prName, prc, store, cat, "");
     }
 
-    public Sales(String prName,float prc, Stores store, Category cat, String det)
+    public Product(String prName, float prc, Stores store, Category cat, String det)
     {
         setProductName(prName);
         setShop(store);
@@ -169,7 +169,7 @@ public class Sales
         return Stores.KWIK_E_MART;
     }
 
-    public static Sales parseFromString(String s) {
+    public static Product parseFromString(String s) {
         Log.d("parseFromString", s);
         String[] fields = s.split("\t");
         String storeName = fields[0];
@@ -180,7 +180,7 @@ public class Sales
         float productPrice = Float.valueOf(fields[3]);
         String productDept = fields[4];
 
-        return new Sales(productName, productPrice, store, DepthFromString(productDept), productDetail);
+        return new Product(productName, productPrice, store, DepthFromString(productDept), productDetail);
     }
 
 
