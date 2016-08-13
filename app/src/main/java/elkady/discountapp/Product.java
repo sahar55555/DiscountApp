@@ -3,13 +3,17 @@ package elkady.discountapp;
 import android.util.Log;
 
 /**
- * Created by elkady on 4/14/16.
+ * This class represents an item of the Full List View of the Discount App Database.
+ * This means that, instead of ENUMs for Categories or Stores, it will house fulltext names for
+ * those fields in order to serve as data inside a list item (which needs the strings).
  */
+
+
 public class Product
 {
     private String ProductName;
     public enum Stores {
-        KWIK_E_MART(0), KING_SOOPERS(1), SPROUTS(2), SAFE_WAY(3), ALBERTSONS(4);
+        KWIK_E_MART(0), KING_SOOPERS(1), SPROUTS(2), SAFE_WAY_ALBERTSONS(3), ALBERTSONS(4);
         private final int index;
         Stores(int i) {
             this.index = i;
@@ -62,17 +66,53 @@ public class Product
         }
         return Category.NOTHING;
     }
-
+/*
+    Class properties and fields
+ */
     private Stores Shop;
     private Category Dept;
     private float Price;
+
+    /**
+     * Deal - the string-based description of price or "deal" offered by the store.
+     **/
+    private String deal;
+    public void setDeal(String val) {
+        deal = val;
+    }
+    public String getDeal() {
+        return deal;
+    }
+    /*
+    * Store - Houses the String-based value of the "Store" for use in list item display.
+    *   May be be bound to a database query result or other object.
+     */
+    private String store;
+    public void setStore(String val) {
+        store = val;
+    }
+    public String getStore() {
+        return store;
+    }
+    private String category;
+    public void setCategory(String val) {
+        category = val;
+    }
+    public String getCategory() {
+        return category;
+    }
+
     private String detail;
+
+    /*****
+     *
+     Constructors using the enums will be removed.
+     *******/
 
     public Product(String prName, float prc, Stores store, Category cat)
     {
         this(prName, prc, store, cat, "");
     }
-
     public Product(String prName, float prc, Stores store, Category cat, String det)
     {
         setProductName(prName);
@@ -81,6 +121,21 @@ public class Product
         setDept(cat);
         setDetail(det);
     }
+
+    /*****
+     * A Class with Strings available for list items
+     * @param name - The product name
+     * @param category - The product category or department
+     * @param store - The store offering the deal
+     * @param deal - The deal offered by the store.
+     */
+    public Product(String name, String category, String store, String deal) {
+        setProductName(name);
+        setCategory(category);
+        setDeal(deal);
+        setStore(store);
+    }
+
     public boolean hasDetailField() {
         return detail.length() > 0;
     }
@@ -146,10 +201,8 @@ public class Product
         switch(store) {
             case KING_SOOPERS:
                 return "KS";
-            case ALBERTSONS:
-                return "Alb";
-            case SAFE_WAY:
-                return "SW";
+            case SAFE_WAY_ALBERTSONS:
+                return "SWAlb";
             case SPROUTS:
                 return "SP";
         }
@@ -160,10 +213,8 @@ public class Product
     {
         if (sval.compareToIgnoreCase("KS") == 0)
             return Stores.KING_SOOPERS;
-        if (sval.compareToIgnoreCase("Ab") == 0)
-            return Stores.ALBERTSONS;
-        if (sval.compareToIgnoreCase("SW") == 0)
-            return Stores.SAFE_WAY;
+        if (sval.compareToIgnoreCase("SWAlb") == 0)
+            return Stores.SAFE_WAY_ALBERTSONS;
         if (sval.compareToIgnoreCase("SP") == 0)
             return Stores.SPROUTS;
         return Stores.KWIK_E_MART;
