@@ -91,7 +91,6 @@ public class ServerUtil {
             if (callbackFxn != null) {
                 callbackFxn.process(result);
             }
-
         }
         private String downloadUrl(String URLString) throws IOException {
             InputStream is = null;
