@@ -5,14 +5,20 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.zip.CRC32;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by david on 6/27/16.
@@ -26,17 +32,22 @@ public class ServerUtil {
 
     // settings
     // ... server location
-    private static final String SERVER_URL_BASE = "http://www.prfol.org/phi";
-    private static final String TIMESTAMP_URL = SERVER_URL_BASE + "/timestamp.php";
+    private static final String SERVER_URL_BASE = "https://pricklys-wwwss32.ssl.supercp.com/DiscountApp"; // SSL version of prickly soft
+    private static final String TIMESTAMP_URL = SERVER_URL_BASE + "/api/lists/products";
     // ... configuration
     private static final int READ_TIMEOUT = 10000; // milliseconds
     private static final int CONNECT_TIMEOUT = 15000; // milliseconds
-    private static final String CONNECT_METHOD = "GET"; // don't have a use for POST yet
+    private static final String CONNECT_METHOD = "POST"; // don't have a use for POST yet
     private static final boolean DO_INPUT = true;
 
     // connection vars
     private ConnectivityManager connMgr;
     private NetworkInfo networkInfo;
+
+    // checksum
+    private long crc32CheckSum;
+
+    public long getCrc32CheckSum() { return crc32CheckSum; }
 
 
     public ServerUtil(Activity parentActivity) {
@@ -71,7 +82,8 @@ public class ServerUtil {
             try {
                 return downloadUrl(url);
             } catch (IOException e) {
-                return "Unable to retrieve web page. URL may be invalid.";
+                Log.e("doInBackground", e.toString());
+                return "Unable to retrieve web page. URL may be invalid. " + e;
             }
         }
         @Override
@@ -83,11 +95,11 @@ public class ServerUtil {
         }
         private String downloadUrl(String URLString) throws IOException {
             InputStream is = null;
-            int len = 4028;
+            int len = 1024 * 1024;
 
             try {
                 URL url = new URL(URLString);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
                 conn.setConnectTimeout(CONNECT_TIMEOUT);
                 conn.setRequestMethod(CONNECT_METHOD);
@@ -114,11 +126,38 @@ public class ServerUtil {
             Reader reader = new InputStreamReader(stream, "UTF-8");
             char[] buffer = new char[len];
             int numRead = reader.read(buffer);
-            char[] truncated = new char[numRead];
+
             // the empty spots in the char[] cause parsing problems,
             //  transfer data to an exactly sized array
-            for (int i = 0; i < numRead; i++) truncated[i] = buffer[i];
+            char[] truncated = TruncateCharBuf(buffer, numRead);
+            String str_truncated = new String(truncated);
+            byte[] byte_truncated = str_truncated.getBytes(StandardCharsets.UTF_8);
+            CRC32 crc32 = new CRC32();
+            crc32.update(byte_truncated);
+            crc32CheckSum = crc32.getValue();
             return new String(truncated);
+        }
+
+        char[] TruncateCharBuf(char[] buf, int newSize) {
+            char[] truncated = new char[newSize];
+            for (int i = 0; i < newSize; i++) truncated[i] = buf[i];
+            return truncated;
+        }
+
+        public String ReadIntoString(InputStream stream) throws IOException {
+            Reader reader = new InputStreamReader(stream, "UTF-8");
+            int numRead, chunk = 1024;
+            char[] buffer = new char[chunk];
+
+            StringWriter writer = new StringWriter();
+
+            do {
+                numRead = reader.read(buffer, 0, chunk);
+                if (numRead > 0) writer.write(buffer, 0, numRead);
+
+            }while (numRead != -1);
+
+            return writer.toString();
         }
     }
 }
