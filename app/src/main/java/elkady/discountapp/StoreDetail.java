@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 // these are the Views defined in the xml file
 import static elkady.discountapp.R.id.Bakery;
@@ -31,7 +29,7 @@ public class StoreDetail extends Activity implements View.OnClickListener
     Button bakery_button=null;
     Button bath_button=null;
     Button foodNbeverages_button=null;
-    Sales.Stores store_id; // this could be equivalent to KING_SOOPERS
+    Product.Stores store_id; // this could be equivalent to KING_SOOPERS
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -47,7 +45,7 @@ public class StoreDetail extends Activity implements View.OnClickListener
         foodNbeverages_button=(Button)findViewById(Food_N_Beverages);
 
         //set our store_id variable to the param passed in through Intent.putExtra
-        store_id = (Sales.Stores)getIntent().getSerializableExtra(MainActivity.STORENAME_EXTRA);
+        store_id = (Product.Stores)getIntent().getSerializableExtra(MainActivity.STORENAME_EXTRA);
         switch(store_id)
         {
             case KING_SOOPERS:
