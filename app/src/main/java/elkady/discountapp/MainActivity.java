@@ -1,26 +1,27 @@
 package elkady.discountapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
-import android.text.format.DateUtils;
-//import android.text.SimpleDateFormat;
+import android.widget.Toast;
 
+// for date parsing
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import static java.util.logging.Logger.*;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
 
     public final static String STORENAME_EXTRA="elkady.discountapp.STORENAME";
+
+    private ServerUtil server;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -44,6 +45,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String s2 = "Mon, 27 Jun 2016 00:06:34";
         compareTimestamps(s1, s2);
 
+        server = new ServerUtil(this);
+
+    }
+
+    private void showTimeStamp() {
+        final Context context = this; // final so it can be used in the callback
+        ServerUtil.ProcessGET callback = new ServerUtil.ProcessGET() {
+            @Override
+            public void process(String data) {
+                long checksum = server.getCrc32CheckSum();
+                String message = String.format("Data is %d bytes, checksum=%x", data.length(), checksum);
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            }
+        };
+
+        server.getTimeStamp(callback);
     }
 
     public int compareTimestamps(String oldTimestamp,  String newTimeStamp) {
@@ -60,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return 0;
 
         } catch (ParseException ex) {
-            getLogger(Package.class.getName()).log(Level.SEVERE, null, ex);
+            Log.e("compareTimestamps", ex.toString());
         }
 
 
@@ -76,26 +93,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.ks_button:
                 intent=new Intent (this, StoreDetail.class);
-                intent.putExtra(STORENAME_EXTRA,Sales.Stores.KING_SOOPERS);
+                intent.putExtra(STORENAME_EXTRA, Product.Stores.KING_SOOPERS);
                 startActivity(intent);
                 break;
             case R.id.albertsons_button:
                 intent=new Intent (this, StoreDetail.class);
-                intent.putExtra(STORENAME_EXTRA,Sales.Stores.ALBERTSONS);
+                intent.putExtra(STORENAME_EXTRA, Product.Stores.ALBERTSONS);
                 startActivity(intent);
                 break;
             case R.id.sw_button:
                 intent=new Intent (this, StoreDetail.class);
-                intent.putExtra(STORENAME_EXTRA,Sales.Stores.SAFE_WAY);
+                intent.putExtra(STORENAME_EXTRA, Product.Stores.SAFE_WAY);
                 startActivity(intent);
                 break;
             case R.id.sprouts_button:
                 intent=new Intent (this, StoreDetail.class);
-                intent.putExtra(STORENAME_EXTRA,Sales.Stores.SPROUTS);
+                intent.putExtra(STORENAME_EXTRA, Product.Stores.SPROUTS);
                 startActivity(intent);
                 break;
             case R.id.http_test:
-                startActivity(new Intent(this, HttpExampleActivity.class));
+                showTimeStamp();
                 break;
         }
 
