@@ -91,19 +91,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch(v.getId())
         {
-            case R.id.ks_button:
+            case R.id.kingsoopers_button:
                 intent=new Intent (this, StoreDetail.class);
                 intent.putExtra(STORENAME_EXTRA, Product.Stores.KING_SOOPERS);
                 startActivity(intent);
                 break;
-            case R.id.albertsons_button:
+            case R.id.wholefoods_button:
                 intent=new Intent (this, StoreDetail.class);
-                intent.putExtra(STORENAME_EXTRA, Product.Stores.ALBERTSONS);
+                intent.putExtra(STORENAME_EXTRA, Product.Stores.WHOLE_FOODS);
                 startActivity(intent);
                 break;
             case R.id.sw_button:
                 intent=new Intent (this, StoreDetail.class);
-                intent.putExtra(STORENAME_EXTRA, Product.Stores.SAFE_WAY);
+                intent.putExtra(STORENAME_EXTRA, Product.Stores.SAFEWAY_ALBERTSONS);
                 startActivity(intent);
                 break;
             case R.id.sprouts_button:

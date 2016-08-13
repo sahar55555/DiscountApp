@@ -30,8 +30,8 @@
     <Button
         android:layout_width="120dp"
         android:layout_height="match_parent"
-        android:text="King Soopers"
-        android:id="@+id/ks_button"
+        android:text="@string/kingsoopers"
+        android:id="@+id/kingsoopers_button"
         android:layout_marginRight="90dp"
         android:layout_alignParentStart="true"
 
@@ -41,8 +41,8 @@
     <Button
         android:layout_width="125dp"
         android:layout_height="match_parent"
-        android:text="Albertsons"
-        android:id="@+id/albertsons_button"
+        android:text="@string/wholefoods"
+        android:id="@+id/wholefoods_button"
         android:layout_marginLeft="5dp"
         android:layout_alignParentStart="true"
 
@@ -55,7 +55,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sprouts"
+        android:text="@string/sprouts"
         android:id="@+id/sprouts_button"
         android:layout_marginRight="100dp"
         android:layout_alignParentStart="true"
@@ -65,8 +65,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SafeWay"
-        android:id="@+id/sw_button"
+        android:text="@string/safeway_alb"
+        android:id="@+id/swalb_button"
         android:layout_gravity="top"
         android:layout_marginLeft="10dp"
         android:layout_alignParentStart="true"

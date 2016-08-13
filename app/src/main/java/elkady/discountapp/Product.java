@@ -13,7 +13,7 @@ public class Product
 {
     private String ProductName;
     public enum Stores {
-        KWIK_E_MART(0), KING_SOOPERS(1), SPROUTS(2), SAFE_WAY_ALBERTSONS(3), ALBERTSONS(4);
+        KWIK_E_MART(0), KING_SOOPERS(1), SPROUTS(2), SAFEWAY_ALBERTSONS(3), WHOLE_FOODS(4);
         private final int index;
         Stores(int i) {
             this.index = i;
@@ -201,7 +201,7 @@ public class Product
         switch(store) {
             case KING_SOOPERS:
                 return "KS";
-            case SAFE_WAY_ALBERTSONS:
+            case SAFEWAY_ALBERTSONS:
                 return "SWAlb";
             case SPROUTS:
                 return "SP";
@@ -214,7 +214,7 @@ public class Product
         if (sval.compareToIgnoreCase("KS") == 0)
             return Stores.KING_SOOPERS;
         if (sval.compareToIgnoreCase("SWAlb") == 0)
-            return Stores.SAFE_WAY_ALBERTSONS;
+            return Stores.SAFEWAY_ALBERTSONS;
         if (sval.compareToIgnoreCase("SP") == 0)
             return Stores.SPROUTS;
         return Stores.KWIK_E_MART;
