@@ -18,7 +18,7 @@ import static elkady.discountapp.R.id.storeName;
 /**
  * Created by elkady on 5/15/16.
  */
-public class StoreDetail extends Activity implements View.OnClickListener
+public class StoreDetailActivity extends Activity implements View.OnClickListener
 {
 
 
