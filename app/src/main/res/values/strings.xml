@@ -9,8 +9,8 @@
     <string name="food_beverage_label">Food and Beverages</string>
     <string name="testbutton">Test Data Connection</string>
     <!-- storenames -->
-    <string name="kingsoopers">King Sooper's</string>
-    <string name="safeway_alb">Safeway/Albertson's</string>
-    <string name="sprouts">Sprout's</string>
-    <string name="wholefoods">Whole Food's</string>
+    <string name="kingsoopers">King Sooper\'s</string>
+    <string name="safeway_alb">Safeway/Albertson\'s</string>
+    <string name="sprouts">Sprouts</string>
+    <string name="wholefoods">Whole Foods</string>
 </resources>

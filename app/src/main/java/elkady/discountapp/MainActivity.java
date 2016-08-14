@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 // for date parsing
+import org.json.JSONException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +19,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
-
+    private final static String TAG = "MainActivity";
     public final static String STORENAME_EXTRA="elkady.discountapp.STORENAME";
 
     private ServerUtil server;
@@ -29,27 +30,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.http_test).setOnClickListener(this);
 
-        View ks_button=findViewById(R.id.ks_button);
-        ks_button.setOnClickListener(this);
+        View kingsoopers_button=findViewById(R.id.kingsoopers_button);
+        kingsoopers_button.setOnClickListener(this);
 
-        View albertsons_button=findViewById(R.id.albertsons_button);
+        View albertsons_button=findViewById(R.id.swalb_button);
         albertsons_button.setOnClickListener(this);
 
-        View sw_button=findViewById(R.id.sw_button);
-        sw_button.setOnClickListener(this);
+        View wholefoods_button=findViewById(R.id.wholefoods_button);
+        wholefoods_button.setOnClickListener(this);
 
         View sprouts_button=findViewById(R.id.sprouts_button);
         sprouts_button.setOnClickListener(this);
 
-        String s1 = "Mon, 27 Jun 2016 00:04:41"; // as supplied by www.prfol.org/phi/timestamp.php
+        /** Currently unused and throwing exception
+         *String s1 = "Mon, 27 Jun 2016 00:04:41"; // as supplied by www.prfol.org/phi/timestamp.php
         String s2 = "Mon, 27 Jun 2016 00:06:34";
-        compareTimestamps(s1, s2);
+        compareTimestamps(s1, s2);**/
 
         server = new ServerUtil(this);
 
     }
 
-    private void showTimeStamp() {
+    private void updateFromServer() {
         final Context context = this; // final so it can be used in the callback
         ServerUtil.ProcessGET callback = new ServerUtil.ProcessGET() {
             @Override
@@ -57,6 +59,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 long checksum = server.getCrc32CheckSum();
                 String message = String.format("Data is %d bytes, checksum=%x", data.length(), checksum);
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+
+                JSONParser dp = null;
+                // parse data into JSON object
+                try {
+                    dp = new JSONParser(data);
+                    Toast.makeText(context, "Parsed " + dp.size() + " rows.", Toast.LENGTH_LONG).show();
+
+                }
+                catch(JSONException e) {
+                    Log.e(TAG, "error parsing JSON data: " + e.toString());
+
+                }
             }
         };
 
@@ -77,9 +91,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return 0;
 
         } catch (ParseException ex) {
-            Log.e("compareTimestamps", ex.toString());
+            Log.e(TAG, "compareTimestamps:" + ex.toString());
         }
-
 
         return 0;
     }
@@ -101,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra(STORENAME_EXTRA, Product.Stores.WHOLE_FOODS);
                 startActivity(intent);
                 break;
-            case R.id.sw_button:
+            case R.id.swalb_button:
                 intent=new Intent (this, StoreDetail.class);
                 intent.putExtra(STORENAME_EXTRA, Product.Stores.SAFEWAY_ALBERTSONS);
                 startActivity(intent);
@@ -112,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.http_test:
-                showTimeStamp();
+                updateFromServer();
                 break;
         }
 

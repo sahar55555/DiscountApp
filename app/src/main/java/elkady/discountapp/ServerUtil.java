@@ -33,7 +33,7 @@ public class ServerUtil {
     // settings
     // ... server location
     private static final String SERVER_URL_BASE = "https://pricklys-wwwss32.ssl.supercp.com/DiscountApp"; // SSL version of prickly soft
-    private static final String TIMESTAMP_URL = SERVER_URL_BASE + "/api/lists/products";
+    private static final String TIMESTAMP_URL = SERVER_URL_BASE + "/api/lists/full";
     // ... configuration
     private static final int READ_TIMEOUT = 10000; // milliseconds
     private static final int CONNECT_TIMEOUT = 15000; // milliseconds

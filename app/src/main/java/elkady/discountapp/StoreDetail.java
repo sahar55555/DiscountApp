@@ -51,14 +51,14 @@ public class StoreDetail extends Activity implements View.OnClickListener
             case KING_SOOPERS:
                 stname.setText("King Sooper's");
                 break;
-            case ALBERTSONS:
+            case SAFEWAY_ALBERTSONS:
                 stname.setText("Albertson's");
                 break;
-            case SAFE_WAY:
-                stname.setText("Safeway");
+            case WHOLE_FOODS:
+                stname.setText("Whole Foods");
                 break;
             case SPROUTS:
-                stname.setText("Sprout's");
+                stname.setText("Sprouts");
                 break;
             default:
                 stname.setText("Undefined store name");
