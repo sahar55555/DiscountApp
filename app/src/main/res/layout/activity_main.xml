@@ -98,6 +98,13 @@
             android:layout_height="wrap_content"
             android:text="@string/testbutton"
             android:id="@+id/http_test"
+            android:layout_column="0" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full List"
+            android:id="@+id/full_list_button"
             android:layout_column="1" />
+            />
     </TableRow>
 </TableLayout>

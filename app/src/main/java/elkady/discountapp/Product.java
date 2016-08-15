@@ -1,6 +1,9 @@
 package elkady.discountapp;
 
+import android.os.Parcelable;
 import android.util.Log;
+
+import java.io.Serializable;
 
 /**
  * This class represents an item of the Full List View of the Discount App Database.
@@ -9,7 +12,7 @@ import android.util.Log;
  */
 
 
-public class Product
+public class Product implements Serializable
 {
     private String ProductName;
     public enum Stores {

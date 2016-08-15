@@ -22,7 +22,7 @@
             android:singleLine="false"/>
 
         <TextView
-            android:id="@+id/item_price"
+            android:id="@+id/item_deal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -30,7 +30,14 @@
             android:singleLine="false"/>
 
         <TextView
-            android:id="@+id/item_dept"
+            android:id="@+id/item_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:singleLine="false"/>
+        <TextView
+            android:id="@+id/item_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
