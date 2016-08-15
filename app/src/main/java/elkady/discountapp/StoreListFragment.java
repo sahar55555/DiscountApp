@@ -21,14 +21,14 @@ public class StoreListFragment extends ListFragment implements AdapterView.OnIte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view =inflater.inflate(R.layout.store_fragment,container,false);
+        View view = inflater.inflate(R.layout.store_fragment,container,false);
         return view;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
-        Intent screen=new Intent(getActivity(),StoreDetail.class);
+        Intent screen=new Intent(getActivity(),StoreDetailActivity.class);
         //screen.putExtra(ID_EXTRA),String.valueOf(id));
         startActivity(screen);
     }
