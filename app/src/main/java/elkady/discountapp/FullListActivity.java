@@ -66,7 +66,10 @@ public class FullListActivity extends Activity {
             category= (TextView)row.findViewById(R.id.item_category);
         }
         void populateFrom(Product p) {
-            name.setText(p.getProductName());
+            // limit the character width in the name field
+            int fieldLength = 35;
+            String productName = p.getProductName();
+            name.setText(productName.length() > 35 ? productName.substring(0,35) : productName);
             deal.setText(p.getDeal());
             store.setText(p.getStore());
             category.setText(p.getCategory());

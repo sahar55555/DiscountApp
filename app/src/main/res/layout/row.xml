@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <!-- I deleted the vertical orientation that we can have two items on one line -->
-    <!-- hi Sahar! -->
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:backgroundTint="#fcf0f0"
+        android:background="#fcf0f0"
+        android:text="Name"
+        android:paddingLeft="5sp" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/item_deal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textStyle="normal"
+        android:singleLine="true"
+        android:textIsSelectable="true"
+        android:textColor="#c07070"
+        android:text="Deal"
+        android:paddingLeft="5sp" />
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/item_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textStyle="normal"
+        android:singleLine="true"
+        android:autoText="false"
+        android:background="#fcf0f0"
+        android:text="Category"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/item_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textStyle="normal"
+        android:singleLine="true"
+        android:textAlignment="viewEnd"
+        android:text="Store" />
 
-        <TextView
-            android:id="@+id/item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:singleLine="false"/>
-
-        <TextView
-            android:id="@+id/item_deal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:singleLine="false"/>
-
-        <TextView
-            android:id="@+id/item_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:singleLine="false"/>
-        <TextView
-            android:id="@+id/item_store"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:singleLine="false"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+    </TableRow>

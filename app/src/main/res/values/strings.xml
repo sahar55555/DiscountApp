@@ -7,7 +7,7 @@
     <string name="produce_label">Produce</string>
     <string name="bath_label">Bath</string>
     <string name="food_beverage_label">Food and Beverages</string>
-    <string name="testbutton">Test Data Connection</string>
+    <string name="testbutton">Download and Show Data</string>
     <!-- storenames -->
     <string name="kingsoopers">King Sooper\'s</string>
     <string name="safeway_alb">Safeway/Albertson\'s</string>

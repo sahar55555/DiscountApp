@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View sprouts_button=findViewById(R.id.sprouts_button);
         sprouts_button.setOnClickListener(this);
 
-        View full_list_button = findViewById(R.id.full_list_button);
-        full_list_button.setOnClickListener(this);
-
         /** Currently unused and throwing exception
          *String s1 = "Mon, 27 Jun 2016 00:04:41"; // as supplied by www.prfol.org/phi/timestamp.php
         String s2 = "Mon, 27 Jun 2016 00:06:34";
@@ -62,15 +59,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void process(String data) {
                 long checksum = server.getCrc32CheckSum();
                 String message = String.format("Data is %d bytes, checksum=%x", data.length(), checksum);
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                Log.d(TAG, message);
 
                 JSONParser dp = null;
                 // parse data into JSON object
                 try {
                     dp = new JSONParser(data);
-                    Toast.makeText(context, "Parsed " + dp.size() + " rows.", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context, "Parsed " + dp.size() + " rows.", Toast.LENGTH_LONG).show();
+                    Log.d(TAG, "Parsed " + dp.size() + " rows.");
                     ProductArrayList = dp.GetArrayList();
                     Log.d(TAG, "ProductArrayList.size() = " + ProductArrayList.size());
+                    // Load the ArrayList screen
+                    if (ProductArrayList != null) {
+                        Intent intent = new Intent(MainActivity.this, FullListActivity.class);
+                        intent.putExtra("ARRAYLIST", ProductArrayList);
+                        startActivity(intent);
+                    }
 
                 }
                 catch(JSONException e) {
@@ -133,14 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.http_test:
                 updateFromServer();
                 break;
-            case R.id.full_list_button:
-                Log.d(TAG, "full list button pressed, ProductArrayList ?" + ((ProductArrayList!=null) ? " yes" : " no"));
-                if (ProductArrayList != null) {
-                    intent = new Intent(this, FullListActivity.class);
-                    intent.putExtra("ARRAYLIST", (Serializable)ProductArrayList);
-                    startActivity(intent);
-                }
-                break;
+
         }
 
     }
